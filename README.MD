@@ -29,3 +29,6 @@ Algorithms Presented:
 2. Unsupervised Learning
 
     a) k means algorithm
+
+3. PCA Transformation
+
