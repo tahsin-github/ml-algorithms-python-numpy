@@ -75,13 +75,14 @@ def bayes_numerator(likelihood, prior):
 
 
 
-def gaussian_bayes_classification(test_feature, mean, covariance, prior_prob, class_labels):
+def gaussian_bayes_classification_with_cost(test_feature, mean, covariance, prior_prob, class_labels, cost_function):
     """
     Input:
     1. test_feature: the test features in 2D array(not matrix).
     2. mean: the mean vector of the features in dictionary.(from the training step)
     3. covariance: the covariance of the features in dictionary.(from the training step)
     4. prior_prob : the prior probability of each of the labels dictionary.(from the training step)
+    5. cost_function: a 2d array associated with corresponding cost of misclassification.
 
     Output:
     The predicted label in list.
@@ -95,7 +96,7 @@ def gaussian_bayes_classification(test_feature, mean, covariance, prior_prob, cl
     for i in range(len(test_feature)):
         x = test_feature[i]
 
-        class_compare = np.empty([len(class_labels), 3])
+        class_compare = np.empty([len(class_labels), 4])
         class_compare[:] = np.nan
         class_compare[:, 0] = class_labels
 
@@ -108,11 +109,18 @@ def gaussian_bayes_classification(test_feature, mean, covariance, prior_prob, cl
         class_compare[:, 1] = bayes_numerator_all_class
         class_compare[:, 2] = posterior_porb
 
+        risk_function = np.dot(cost_function, posterior_porb)
+    
+        class_compare[:, 3] = risk_function  
         
 
-        maximum_posterior =  max(class_compare[:, 2])
+        
+        minimum_cost      =  min(class_compare[:, 3])
+        
+        
+        
 
-        c = class_compare[class_compare[:,2] == maximum_posterior,][0][0]
+        c = class_compare[class_compare[:,3] == minimum_cost,][0][0]
 
         pred_label.append(c)
     
