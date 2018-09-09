@@ -23,16 +23,16 @@ Algorithms Presented:
 
 1. Supervised Learning:
 
-    a) k-nearest neighbors algorithm
-    b) Bayes Classifier
-        i) Naive Bayes Classifier
-        ii) Gaussian(Multivariate) Classifier
-        iii) Gaussian(Multivariate) Classifier with cost function.
+    * k-nearest neighbors algorithm
+    * Bayes Classifier
+        * Naive Bayes Classifier
+        * Gaussian(Multivariate) Classifier
+        * Gaussian(Multivariate) Classifier with cost function.
     
 
 2. Unsupervised Learning
 
-    a) k means algorithm
+    * k means algorithm
 
 3. PCA Transformation
 
