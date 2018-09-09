@@ -5,7 +5,7 @@ def train_naive_bayes(train_data, label):
     """
     Input:
     1. train_data: the train data with the label column. The data must be in 2d array(not matrix).
-    2. label: the column index of the label in the train_data
+    2. label: the column index of the label in the train_data.
     
     Output:
     1. mean: the mean vector of the features in dictionary.
@@ -76,6 +76,16 @@ def bayes_numerator(likelihood, prior):
 
 
 def gaussian_bayes_classification(test_feature, mean, covariance, prior_prob, class_labels):
+    """
+    Input:
+    1. test_feature: the test features in 2D array(not matrix).
+    2. mean: the mean vector of the features in dictionary.(from the training step)
+    3. covariance: the covariance of the features in dictionary.(from the training step)
+    4. prior_prob : the prior probability of each of the labels dictionary.(from the training step)
+
+    Output:
+    The predicted label in list.
+    """
 
     import numpy as np
 
